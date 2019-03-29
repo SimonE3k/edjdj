@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Tax Tags -->
+        <!-- ##################### exemple ###########################-->
+        <!--<record id="tag_gst" model="account.account.tag">-->
+        <!--<field name="name">GST</field>-->
+        <!--<field name="applicability">taxes</field>-->
+        <!--</record>-->
+
+        <!-- ############################################################ -->
+        <!-- SALES TAXES -->
+
+        <record id="gstpst_sale_bc_gst_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">GST on sales - 5%</field>
+            <field name="description">GST 5%</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">1</field>
+            <field name="include_base_amount" eval="False"/>
+            <field name="account_id" ref="chart2310_en"/>
+            <field name="refund_account_id" ref="chart2310_en"/>
+            <!--<field name="tag_ids" eval="[(6,0,[ref('tag_gst')])]"/>-->
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="qst_sale_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">QST on sales - 9.975%</field>
+            <field name="description">QST 9.975%</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">9.9750</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">3</field>
+            <field name="account_id" ref="chart2340_en"/>
+            <field name="refund_account_id" ref="chart2340_en"/>
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="gstqst_sale_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">GST + QST on sales</field>
+            <field name="description">GST + QST</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">100</field>
+            <field name="amount_type">group</field>
+            <field name="sequence">5</field>
+            <field name="children_tax_ids" eval="[(6,0,[ref('gstpst_sale_bc_gst_en'), ref('qst_sale_en')])]"/>
+            <!--<field name="tag_ids" eval="[(6,0,[ref('tag_gstqst_sale')])]"/>-->
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="gst_sale_non_taxable_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">Non-taxable sales</field>
+            <field name="description">NON TAXABLE</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="amount_type">fixed</field>
+            <field name="sequence">7</field>
+            <!--<field name="account_id" ref="chart2132_en"/>-->
+            <!--<field name="refund_account_id" ref="chart2132_en"/>-->
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <!-- PURCHASE TAXES -->
+
+        <record id="gstpst_purc_mb_gst_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">GST for purchases - 5%</field>
+            <field name="description">GST 5%</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">2</field>
+            <field name="include_base_amount" eval="False"/>
+            <field name="account_id" ref="chart2320_en"/>
+            <field name="refund_account_id" ref="chart2320_en"/>
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="qst_purc_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">QST on purchases - 9.975%</field>
+            <field name="description">QST 9.975%</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">9.9750</field>
+            <field name="amount_type">percent</field>
+            <field name="sequence">4</field>
+            <field name="account_id" ref="chart2350_en"/>
+            <field name="refund_account_id" ref="chart2350_en"/>
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="gstqst_purc_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">GST + QST on purchases</field>
+            <field name="description">GST + QST</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">100</field>
+            <field name="amount_type">group</field>
+            <field name="sequence">6</field>
+            <field name="children_tax_ids" eval="[(6,0,[ref('gstpst_purc_mb_gst_en'), ref('qst_purc_en')])]"/>
+            <!--<field name="tag_ids" eval="[(6,0,[ref('tag_gstqst_purc')])]"/>-->
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+        <record id="gst_purchase_non_taxable_en" model="account.tax">
+            <!--<field name="chart_template_id" ref="ca_en_chart_template_en"/>-->
+            <field name="name">Non-taxable purchases</field>
+            <field name="description">NON TAXABLE</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="amount_type">fixed</field>
+            <field name="sequence">8</field>
+            <!--<field name="account_id" ref="chart2132_en"/>-->
+            <!--<field name="refund_account_id" ref="chart2132_en"/>-->
+            <field name="tax_group_id" ref="tax_group_fix"/>
+        </record>
+
+
+    </data>
+</odoo>

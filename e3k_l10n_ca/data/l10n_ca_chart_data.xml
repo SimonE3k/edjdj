@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Account Templates-->
+
+        <!-- ASSET -->
+
+        <record id="chart2320_en" model="account.account">
+            <field name="code">2320</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="False"/>
+            <field name="name">TPS à recevoir (payée)</field>
+        </record>
+
+
+        <record id="chart2350_en" model="account.account">
+            <field name="code">2350</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="name">TVQ à recevoir (payée)</field>
+        </record>
+
+
+        <record id="chart1000_en" model="account.account">
+            <field name="code">1000</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="name">Transfert Inter-banques</field>
+        </record>
+
+
+        <!-- INCOME -->
+
+
+        <record id="chart4000_en" model="account.account">
+            <field name="code">4000</field>
+            <field name="user_type_id" ref="account.data_account_type_other_income"/>
+            <field name="reconcile" eval="False"/>
+            <field name="name">Ventes</field>
+        </record>
+
+
+        <!-- RECEIVABLE -->
+
+        <record id="chart1100_en" model="account.account">
+            <field name="code">1100</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="name">Comptes Clients</field>
+        </record>
+
+
+        <!-- LIABILITIES -->
+
+        <record id="chart2310_en" model="account.account">
+            <field name="code">2310</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="reconcile" eval="False"/>
+            <field name="name">TPS à remettre (perçue)</field>
+        </record>
+
+
+        <record id="chart2340_en" model="account.account">
+            <field name="code">2340</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="reconcile" eval="False"/>
+            <field name="name">TVQ à remettre (perçue)</field>
+        </record>
+
+
+        <!-- PAYABLE -->
+
+
+        <record id="chart2100_en" model="account.account">
+            <field name="code">2100</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="name">Comptes Fournisseurs</field>
+        </record>
+
+
+        <!-- REVENUE -->
+
+        <record id="chart5000_en" model="account.account">
+            <field name="code">5000</field>
+            <field name="user_type_id" ref="account.data_account_type_revenue"/>
+            <field name="reconcile" eval="False"/>
+            <field name="name">Achats</field>
+        </record>
+
+
+    </data>
+</odoo>
